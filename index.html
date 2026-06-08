@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Event Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">
+          <span class="logo-icon">&#128197;</span>
+          Event Tracker
+        </h1>
+        <p class="subtitle">Stay on top of your day</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Add Event Form -->
+      <section class="card form-card">
+        <h2 class="section-title">Add New Event</h2>
+        <form id="eventForm" class="form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="title">Title <span class="required">*</span></label>
+              <input type="text" id="title" placeholder="Event title" maxlength="80" required />
+            </div>
+          </div>
+          <div class="form-row two-col">
+            <div class="field">
+              <label for="date">Date <span class="required">*</span></label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input type="time" id="time" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="description">Description</label>
+              <textarea id="description" placeholder="Optional details..." rows="3" maxlength="400"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Event</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Filter & Stats -->
+      <section class="toolbar">
+        <div class="stats">
+          <span class="stat"><span id="totalCount">0</span> total</span>
+          <span class="divider">·</span>
+          <span class="stat"><span id="pendingCount">0</span> pending</span>
+          <span class="divider">·</span>
+          <span class="stat completed-stat"><span id="completedCount">0</span> done</span>
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+      </section>
+
+      <!-- Events List -->
+      <section class="events-section">
+        <div id="eventList" class="event-list"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <span class="empty-icon">&#128466;</span>
+          <p class="empty-title">No events here</p>
+          <p class="empty-sub">Add one above to get started.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
