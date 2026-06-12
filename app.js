@@ -21,6 +21,7 @@
 
   // ── Init ───────────────────────────────────────────────
   dateInput.value = todayStr();
+  document.getElementById('todayDate').textContent = new Date().toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
   render();
 
   // ── Form submit ────────────────────────────────────────
