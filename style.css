@@ -1,10 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f0f2f8;
+  --bg: #fffde7;
   --surface: #ffffff;
-  --surface-2: #f5f6fa;
-  --border: #dde1ef;
+  --surface-2: #fffef5;
+  --border: #e8e0b0;
   --accent: #6c63ff;
   --accent-hover: #5a52e0;
   --accent-light: rgba(108, 99, 255, 0.1);
@@ -33,10 +33,36 @@ body {
 
 /* ── Header ── */
 .header {
-  background: linear-gradient(135deg, #ffffff 0%, #eef0fb 100%);
+  background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
   border-bottom: 1px solid var(--border);
   padding: 2rem 1.5rem 1.75rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-emoji-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.1rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.header-emoji-row span {
+  display: inline-block;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+.header-emoji-row span:nth-child(1) { animation-delay: 0s; }
+.header-emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+.header-emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+.header-emoji-row span:nth-child(4) { animation-delay: 0.6s; }
+.header-emoji-row span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  45%       { transform: translateY(-8px); }
+  65%       { transform: translateY(-4px); }
 }
 
 .logo {
@@ -44,14 +70,30 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
+  animation: fadeSlideDown 0.6s ease both;
 }
 
-.logo-icon { margin-right: 0.4rem; }
+.logo-icon {
+  margin-right: 0.4rem;
+  display: inline-block;
+  animation: spin 0.7s ease 0.5s both;
+}
+
+@keyframes spin {
+  from { transform: rotate(-20deg) scale(0.7); opacity: 0; }
+  to   { transform: rotate(0deg)  scale(1);   opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .subtitle {
   margin-top: 0.35rem;
   color: var(--text-muted);
   font-size: 0.9rem;
+  animation: fadeSlideDown 0.6s ease 0.15s both;
 }
 
 /* ── Layout ── */
@@ -71,6 +113,7 @@ body {
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--shadow);
+  animation: fadeSlideDown 0.5s ease 0.25s both;
 }
 
 .section-title {
